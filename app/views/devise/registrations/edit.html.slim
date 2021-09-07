@@ -1,0 +1,18 @@
+h2 Edit  #{resource_name.to_s.humanize}
+=simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = f.input :email,placeholder:"Введите сюда email", autocomplete: "email"
+  br
+  = f.input :password,placeholder:"Минимальное количество знаков - 6",autocomplete: "new-password"
+  br
+  = f.input :password_confirmation,placeholder:"Введите сюда email", autocomplete: "new-password"
+  br
+  = f.input :current_password,placeholder:"Введите сюда email", autocomplete: "current-password"
+  = f.button :submit, 'Отправить'
+=render "devise/shared/error_messages", resource: resource
+
+h3 Выйти из аккаунта
+p Вы не счастливы?
+h2
+  |
+  =link_to 'Выйти из аккаунта', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
+=link_to "Back", :back

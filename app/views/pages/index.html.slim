@@ -1,0 +1,15 @@
+h1
+  -if user_signed_in?
+    a
+      =link_to "Edit",edit_user_registration_path
+    a
+      =link_to " | LogOut",destroy_user_session_path,method:"delete"
+    p Logged in as #{current_user.email}
+  -else
+    a
+      = link_to "Registration | ", new_user_registration_path
+    a
+      = link_to "Login", new_user_session_path
+
+
+a href="/admin" admin
