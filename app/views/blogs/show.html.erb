@@ -15,5 +15,28 @@
   <%= @blog.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<p>
+<%= link_to 'Edit', edit_blog_path(@blog) if @blog.user_id == current_user.id %> |
 <%= link_to 'Back', blogs_path %>
+</p>
+
+<h2>Replies</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blog.replies.each do |reply| %>
+      <tr>
+        <td><%= reply.text %></td>
+        <td><%= reply.user_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
