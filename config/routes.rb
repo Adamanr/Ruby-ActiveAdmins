@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :replies
+  resources :blogs
   root 'pages#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

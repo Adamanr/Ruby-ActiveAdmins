@@ -1,4 +1,5 @@
-class CreateActiveAdminComments < ActiveRecord::Migration[6.1]
+# class CreateActiveAdminComments < ActiveRecord::Migration[6.1]
+class CreateUserComments < ActiveRecord::Migration[6.1]
   def self.up
     create_table :user_comments do |t|
       t.string :namespace
