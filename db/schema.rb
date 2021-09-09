@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_09_07_131349) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_131349) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_blogs_on_user_id"
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 2021_09_07_131349) do
 
   create_table "replies", force: :cascade do |t|
     t.text "text"
-    t.integer "user_id", null: false
-    t.integer "blog_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "blog_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["blog_id"], name: "index_replies_on_blog_id"
@@ -47,9 +50,9 @@ ActiveRecord::Schema.define(version: 2021_09_07_131349) do
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_user_comments_on_author"
